@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  backend:
+    container_name: backend
+    image: honsontran/deso-backend:stable
+    command: run
+    volumes:
+    - /home/honson/flux/deso/db:/db
+    ports:
+    - 33444:33444
+    - 33445:33445
+  frontend:
+    container_name: frontend 
+    image: honsontran/deso-frontend:stable
+    ports:
+    - 33446:33446
+  nginx: 
+    container_name: nginx
+    image: honsontran/deso-nginx:latest
+    depends_on: 
+      - backend
+      - frontend
+    ports:
+      - 31000:31000
+      - 443:443
+volumes:
+  db:

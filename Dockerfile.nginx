@@ -1,0 +1,6 @@
+FROM nginx:latest
+
+COPY run/nginx.dev /etc/nginx/nginx.conf
+
+EXPOSE 80
+EXPOSE 443

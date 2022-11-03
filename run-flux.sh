@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_COMPOSE_FILENAME=docker-compose.dev.yml
+DOCKER_COMPOSE_FILENAME=docker-compose.flux.yml
 
 set -e
 
@@ -13,7 +13,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
     exit 1
 fi
 
-docker-compose -f ${DOCKER_COMPOSE_FILENAME} pull || ( echo -e "\n\n\nTry running ./run.sh with sudo" && exit 1 )
+docker-compose -f ${DOCKER_COMPOSE_FILENAME} pull || ( echo -e "\n\n\nTry running ./run-flux.sh with sudo" && exit 1 )
 docker-compose -f ${DOCKER_COMPOSE_FILENAME} up "$@"
 
 popd
